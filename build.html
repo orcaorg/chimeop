@@ -11,58 +11,59 @@
          body {
          font-family: Arial, sans-serif;
          background-color: #1F1F1F;
-         width: 100%; /* Ensures the body takes up the full width */
-         height: 100vh; /* Ensures the body takes up the full height of the viewport */
+         width: 100%;
+         height: 100vh;
          margin: 0;
          padding: 0;
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         justify-content: flex-start;
          }
          @font-face {
          font-family: 'ABC Ginto Nord Unlicensed Trial Black';
          font-style: normal;
          font-weight: normal;
-         src: local('ABC Ginto Nord Unlicensed Trial Black'), url('abcgintonordblack') format('woff');
+         src: url('abcgintonordblack.woff') format('woff');
          }
          @font-face {
          font-family: 'gg sans Bold';
          font-style: normal;
          font-weight: normal;
-         src: local('gg sans Bold'), url('gg sans Bold.woff') format('woff');
+         src: url('gg-sans-Bold.woff') format('woff');
          }
          @font-face {
          font-family: 'gg sans Normal Regular';
          font-style: normal;
          font-weight: normal;
-         src: local('gg sans Normal Regular'), url('gg sans Regular.woff') format('woff');
+         src: url('gg-sans-Regular.woff') format('woff');
          }
          @font-face {
          font-family: 'gg sans Medium Regular';
          font-style: normal;
          font-weight: normal;
-         src: local('gg sans Medium Regular'), url('gg sans Medium.woff') format('woff');
+         src: url('gg-sans-Medium.woff') format('woff');
          }
          @font-face {
          font-family: 'gg sans SemiBold Regular';
          font-style: normal;
          font-weight: normal;
-         src: local('gg sans SemiBold Regular'), url('gg sans Semibold.woff') format('woff');
+         src: url('gg-sans-Semibold.woff') format('woff');
          }
          .logo {
-         width: 200px; /* Adjust logo size */
-         height: auto; /* Maintain aspect ratio */
-         margin-left: 20px; /* Space between logo and next images */
-         margin-top: 20px;
-         margin-bottom: 15px;
+         width: 200px;
+         height: auto;
+         margin: 20px;
          }
          h1, h2 {
          font-family: "Montserrat", sans-serif;
          font-weight: bold;
          font-size: 2.5rem;
          color: #b8fca4;
-         margin-left: 20px;
+         margin: 0 20px;
+         }
+         h1 {
          margin-top: 20px;
-         position: fixed;
-         top: 150px;
-         margin-bottom: 20px;
          }
          .horizontal-line {
          width: 100%;
@@ -72,8 +73,84 @@
          margin: 0;
          }
          .text-1 {
-         top: 200px;
          font-size: 1.5rem;
+         margin-left: 20px;
+         }
+         ul {
+         margin: 0;
+         padding-left: 40px;
+         color: #b8fca4;
+         }
+         li {
+         margin-top: 10px;
+         font-family: "Montserrat", sans-serif;
+         }
+         span {
+         color: #fca4a4;
+         }
+         .additional-text {
+         color: #b8fca4;
+         font-size: 1.2rem;
+         margin-left: 20px;
+         margin-top: 20px;
+         }
+         .step1 {
+         color: #b8fca4;
+         font-size: 2rem;
+         margin-left: 20px;
+         margin-top: 20px;
+         }
+         bold {
+         font-weight: bold;
+         }
+         p {
+         font-family: "Montserrat", sans-serif;
+         color: #b8fca4;
+         font-size: 1.2rem;
+         margin-left: 20px;
+         margin-top: 20px;
+         }
+         .console {
+         background-color: black;
+         color: white;
+         padding: 20px;
+         margin: 20px;
+         border-radius: 10px;
+         width: 80%;
+         height: 300px;
+         box-sizing: border-box;
+         position: relative; /* Needed for positioning the button inside the console */
+         }
+         .editable {
+         font-style: italic;
+         text-decoration: underline;
+         display: inline;
+         color: white;
+         padding: 0;
+         background: none;
+         border: none;
+         outline: none;
+         cursor: text;
+         }
+         /* Button inside console */
+         .copy-button {
+         position: absolute;
+         bottom: 10px;
+         right: 10px;
+         background-color: #b8fca4;
+         color: black;
+         border: none;
+         padding: 10px 20px;
+         font-size: 1rem;
+         cursor: pointer;
+         border-radius: 5px;
+         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+         }
+         .copy-button:hover {
+         background-color: #a7e68f;
+         }
+         .redirect {
+         color: #fca4a4;
          }
       </style>
    </head>
@@ -81,6 +158,74 @@
       <img class="logo" src="/glogo.png" alt="Logo">
       <hr class="horizontal-line">
       <h1 class="main-text">Building tutorial</h1>
-      <h2 class="text-1">To build a custom version of babyland you need:</h2>
+      <h2 class="text-1">To build a custom version of Chime you need:</h2>
+      <ul>
+         <li>Babyland repo <span>*</span></li>
+         <li>Domain</li>
+         <li>Git <span>*</span></li>
+      </ul>
+      <p class="additional-text">
+         Once you got everything set up. You can start with 
+         <bold>step 1.</bold>
+      </p>
+      <p class="step1">
+         <bold>Step 1.</bold>
+         Set up the directory folder
+      </p>
+      <div class="console">
+         <p>mkdir <span class="editable" contenteditable="true" id="directory-name">DIRECTORY_NAME</span></p>
+         <p>cd <span class="editable" contenteditable="true" id="directory-name2">DIRECTORY_NAME</span></p>
+         <button class="copy-button" id="copy-button">Copy</button>
+      </div>
+      <p>Now you have made a folder and already accessed it. Now we will use <a href="https://git-scm.com/" target="_blank" class="redirect">Git</a> to clone chimes repo.</p>
+      <p class="step1">
+         <bold>Step 2.</bold>
+         Copy the repository.
+      </p>
+      <div class="console">
+         <p>https://github.com/orcaorg/grushaland.git</p>
+         <button class="copy-button" id="copy-button2">Copy</button>
+      </div>
+      <script>
+         const directoryName1 = document.getElementById('directory-name');
+         const directoryName2 = document.getElementById('directory-name2');
+         const copyButton1 = document.getElementById('copy-button');
+         const copyButton2 = document.getElementById('copy-button2');
+         
+         // Update the commands dynamically when the user changes the text in the editable span
+         directoryName1.addEventListener('input', function() {
+            directoryName2.textContent = directoryName1.textContent;
+         });
+         
+         // Copy command function for the first button
+         copyButton1.addEventListener('click', function() {
+            // Get the current directory name
+            const directoryName = directoryName1.textContent;
+         
+            // Construct the commands
+            const commands = `mkdir ${directoryName}\ncd ${directoryName}`;
+         
+            // Create a temporary textarea to copy the text to the clipboard
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = commands;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+         });
+         
+         // Copy command function for the second button
+         copyButton2.addEventListener('click', function() {
+            // Copy the repository URL directly to the clipboard
+            const repoUrl = 'https://github.com/orcaorg/chime.git';
+         
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = repoUrl;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+         });
+      </script>
    </body>
 </html>
